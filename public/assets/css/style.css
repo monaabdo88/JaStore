@@ -1,0 +1,16 @@
+#thumb-output{
+    width: 25%;
+    margin-top: 20px;
+    display: inline-block;
+    max-width: 100%;
+    height: auto;
+    line-height: 1.42857143;
+    background-color: #fff;
+
+}
+.thumb{
+    width: 100%;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 4px;
+}
