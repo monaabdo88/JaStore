@@ -5,12 +5,12 @@
 @section('content')
                 <div class="row">
                     <div class="col-lg-10 col-md-10">
+                        @include('admin.layouts.message')
                         <div class="card">
                             <div class="header">
                                 <h4 class="title">Add Product</h4>
                             </div>
                             <div class="content">
-                                @include('admin.layouts.message')
                                 {{Form::open(['url'=>'products','files'=>'true'])}}
                                 <div class="row">
                                     <div class="col-md-12">

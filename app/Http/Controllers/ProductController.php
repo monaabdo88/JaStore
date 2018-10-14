@@ -25,7 +25,8 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return view('admin.products.create');
+        $product = new Product();
+        return view('admin.products.create',compact('product'));
     }
 
     /**
@@ -69,7 +70,8 @@ class ProductController extends Controller
      */
     public function show($id)
     {
-        //
+        $product = Product::findOrFail($id);
+        return view('admin.products.details',compact('product'));
     }
 
     /**
@@ -81,7 +83,7 @@ class ProductController extends Controller
     public function edit($id)
     {
         $product = Product::findOrFail($id);
-        return view('admin.products.details',compact('product'));
+        return view('admin.products.edit',compact('product'));
     }
 
     /**
@@ -93,7 +95,37 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        //find the product
+        $product = Product::findOrFail($id);
+        //validate data
+        $this->validate($request, [
+            'name'=>'required',
+            'price'=>'required',
+            'description'=>'required'
+        ]);
+        //check if any image
+        if($request->hasFile('image')){
+            //remove the old image
+            if(file_exists(public_path('uploads/').$product->image)){
+                unlink(public_path('uploads/').$product->image);
+            }
+            //upload the new image
+            $image = $request->image;
+            $image->move('uploads',$image->getClientOriginalName());
+            $product->image = $request->image->getClientOriginalName();
+        }
+        //update the product
+        $product->update([
+            'name'=> $request->name,
+            'price' => $request->price,
+            'description' => $request->description,
+            'image'=> $product->image
+        ]);
+        //session message
+        $request->session()->flash('msg','Update Product done successfully');
+        //redirect to products page
+        return redirect('/products');
+
     }
 
     /**

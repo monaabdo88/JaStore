@@ -4,15 +4,14 @@
     @endsection
 @section('content')
     <div class="row">
-
         <div class="col-md-12">
+            @include('admin.layouts.message')
             <div class="card">
                 <div class="header">
                     <h4 class="title">All Products</h4>
                     <p class="category">List of all stock</p>
                 </div>
                 <div class="content table-responsive table-full-width">
-                    @include('admin.layouts.message')
                     <table class="table table-striped">
                         <thead>
                         <tr>

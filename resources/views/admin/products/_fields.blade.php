@@ -25,7 +25,11 @@
         <div class="form-group {{$errors->has('image') ? 'has-error':''}}">
             {{Form::label('image','Product Image:')}}
             {{Form::file('image',['class'=>'form-control border-input','id'=>'file-input'])}}
-            <div id="thumb-output"></div>
+            <div id="thumb-output">
+                @if($product->image)
+                    <img src="{{url('uploads/').'/'.$product->image}}" class="thumb" />
+                    @endif
+            </div>
         @if($errors->has('image'))
                         <p class="text-danger">{{$errors->first('image')}}</p>
                 @endif
