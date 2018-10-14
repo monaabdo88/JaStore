@@ -9,7 +9,7 @@
 
         <ul class="nav">
             <li>
-                <a href="">
+                <a href="{{url('/')}}">
                     <i class="ti-panel"></i>
                     <p>Dashboard</p>
                 </a>
@@ -27,13 +27,13 @@
                 </a>
             </li>
             <li>
-                <a href="">
+                <a href="{{url('orders')}}">
                     <i class="ti-calendar"></i>
                     <p>Orders</p>
                 </a>
             </li>
             <li>
-                <a href="">
+                <a href="{{url('users')}}">
                     <i class="fa fa-users"></i>
                     <p>Users</p>
                 </a>

@@ -1,8 +1,11 @@
 @extends('admin.layouts.master')
+
 @section('page')
     Dashboard
-    @endsection
+@endsection
+
 @section('content')
+
     <div class="row">
         <div class="col-lg-3 col-sm-6">
             <div class="card">
@@ -41,14 +44,14 @@
                         <div class="col-xs-7">
                             <div class="numbers">
                                 <p>Products</p>
-                                $1,345
+                                {{ $products->count() }}
                             </div>
                         </div>
                     </div>
                     <div class="footer">
                         <hr/>
                         <div class="stats">
-                            <i class="ti-panel"></i> Details
+                            <a href="{{ url('/products') }}"><i class="ti-panel"></i> Details</a>
                         </div>
                     </div>
                 </div>
@@ -66,14 +69,14 @@
                         <div class="col-xs-7">
                             <div class="numbers">
                                 <p>Orders</p>
-                                23
+                                {{ $orders->count() }}
                             </div>
                         </div>
                     </div>
                     <div class="footer">
                         <hr/>
                         <div class="stats">
-                            <i class="ti-panel"></i> Details
+                            <a href="{{ url('/orders') }}"><i class="ti-panel"></i> Orders</a>
                         </div>
                     </div>
                 </div>
@@ -91,19 +94,20 @@
                         <div class="col-xs-7">
                             <div class="numbers">
                                 <p>Users</p>
-                                45
+                                {{ $users->count() }}
                             </div>
                         </div>
                     </div>
                     <div class="footer">
                         <hr/>
                         <div class="stats">
-                            <i class="ti-panel"></i> Details
+                            <a href="{{ url('/users') }}"><i class="ti-panel"></i> Users</a>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
 
 @endsection

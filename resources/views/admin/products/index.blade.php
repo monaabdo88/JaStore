@@ -45,7 +45,7 @@
                         @endif
                         </tbody>
                     </table>
-
+                   <div class="text-center col-md-offset-2 col-md-8"> {{$products->links()}}</div>
                 </div>
             </div>
         </div>
