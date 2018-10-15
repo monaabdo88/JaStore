@@ -124,7 +124,7 @@ class ProductController extends Controller
         //session message
         $request->session()->flash('msg','Update Product done successfully');
         //redirect to products page
-        return redirect('/products');
+        return redirect('admin/products');
 
     }
 
