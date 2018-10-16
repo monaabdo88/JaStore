@@ -21,3 +21,11 @@ Route::prefix('admin')->group(function (){
 });
 // Front site Routes
 Route::get('/','Front\HomeController@index');
+Route::get('/user/register','Front\RegistrationController@index');
+Route::post('/user/register','Front\RegistrationController@store');
+Route::get('/user/profile','Front\UserProfileController@index');
+Route::get('/user/login','Front\SessionsController@index');
+Route::post('/user/login','Front\SessionsController@store');
+Route::get('/user/logout','Front\SessionsController@logout');
+Route::get('/user/order/{id}','Front\UserProfileController@show');
+

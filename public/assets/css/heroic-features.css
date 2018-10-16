@@ -57,3 +57,11 @@ body {
     color: #666;
     vertical-align: middle;
 }
+footer{
+    background: #4A5678 !important;
+    padding: 10px;
+    color: #ffffff;
+}
+footer a{
+    color: bisque;
+}

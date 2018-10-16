@@ -1,8 +1,5 @@
 @extends('front.layouts.master')
 @section('content')
-<!-- Page Content -->
-<div class="container">
-
     <!-- Jumbotron Header -->
     <header class="jumbotron my-4">
         <h5 class="display-3"><strong>Welcome,</strong></h5>
@@ -38,7 +35,4 @@
 
     </div>
     <!-- /.row -->
-
-</div>
-<!-- /.container -->
 @endsection
