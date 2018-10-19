@@ -28,4 +28,10 @@ Route::get('/user/login','Front\SessionsController@index');
 Route::post('/user/login','Front\SessionsController@store');
 Route::get('/user/logout','Front\SessionsController@logout');
 Route::get('/user/order/{id}','Front\UserProfileController@show');
+Route::get('/cart','Front\CartController@index');
+Route::post('/cart','Front\CartController@store')->name('cart');
+Route::delete('/cart/remove/{id}','Front\CartController@destroy')->name('cart.destroy');
+Route::post('/cart/saveLater/{product}', 'Front\CartController@saveLater')->name('cart.saveLater');
+Route::delete('/saveLater/destroy/{product}','Front\SaveLaterController@destroy')->name('saveLater.destroy');
+Route::post('/cart/moveToCart/{product}','Front\SaveLaterController@moveToCart')->name('moveToCart');
 
