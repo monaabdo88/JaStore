@@ -30,7 +30,7 @@
                                     <td>{{$product->id}}</td>
                                     <td>{{$product->name}}</td>
                                     <td>{{$product->price}}</td>
-                                    <td>{{$product->description}}</td>
+                                    <td>{{str_limit($product->description,50,'')}}</td>
                                     <td><img src="{{url('uploads').'/'.$product->image}}" alt="{{$product->name}}" class="img-responsive img-thumbnail"
                                              style="width: 100px"></td>
                                     <td>
