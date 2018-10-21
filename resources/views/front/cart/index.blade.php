@@ -36,7 +36,7 @@
                                 </form>
                                 <form action="{{ route('cart.saveLater', $item->rowId)}}" method="post">
                                     {{ csrf_field() }}
-                                    <button type="submit" class="btn btn-link btn-link-dark">Move to cart
+                                    <button type="submit" class="btn btn-link btn-link-dark">Save for later
                                     </button>
 
                                 </form>

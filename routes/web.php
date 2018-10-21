@@ -34,4 +34,8 @@ Route::delete('/cart/remove/{id}','Front\CartController@destroy')->name('cart.de
 Route::post('/cart/saveLater/{product}', 'Front\CartController@saveLater')->name('cart.saveLater');
 Route::delete('/saveLater/destroy/{product}','Front\SaveLaterController@destroy')->name('saveLater.destroy');
 Route::post('/cart/moveToCart/{product}','Front\SaveLaterController@moveToCart')->name('moveToCart');
-
+Route::get('/checkout/','Front\CheckoutController@index');
+Route::post('/checkout/','Front\CheckoutController@store')->name('checkout');
+Route::get('empty', function() {
+    Cart::instance('default')->destroy();
+});

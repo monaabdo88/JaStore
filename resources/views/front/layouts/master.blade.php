@@ -65,6 +65,7 @@
 <!-- Bootstrap core JavaScript -->
 {{Html::script('assets/vendor/jquery/jquery.min.js')}}
 {{Html::script('assets/vendor/bootstrap/js/bootstrap.bundle.min.js')}}
+@yield('script')
 </body>
 
 </html>
