@@ -6,18 +6,24 @@
 
         <h2 class="mt-5"><i class="fa fa-shopping-cart"></i> Shooping Cart</h2>
         <hr>
-        @if(session()->has('msg'))
-            <div class="alert alert-success">
-                <p class="text-center">{{session()->get('msg')}}</p>
-            </div>
-        @endif
-        @if(Cart::instance('default')->count() > 0 )
+        @if ( Cart::instance('default')->count() > 0 )
         <h4 class="mt-5">{{ Cart::instance('default')->count() }} items(s) in Shopping Cart</h4>
         <div class="cart-items">
 
             <div class="row">
 
                 <div class="col-md-12">
+                    @if ( session()->has('msg') )
+
+                        <div class="alert alert-success">{{ session()->get('msg') }}</div>
+
+                    @endif
+
+                    @if ( session()->has('errors') )
+
+                        <div class="alert alert-warning">{{ session()->get('errors') }}</div>
+
+                    @endif
 
                     <table class="table">
                         <tbody>
@@ -44,13 +50,15 @@
                             </td>
 
                             <td>
-                                <select name="" id="" class="form-control" style="width: 4.7em">
-                                    <option value="">1</option>
-                                    <option value="">2</option>
+                                <select class="form-control quantity" style="width: 4.7em" data-id="{{ $item->rowId }}">
+                                    @for ($i = 1; $i < 5 + 1; $i++)
+                                        <option {{ $item->qty == $i ? 'selected' : '' }}>{{$i}}</option>
+                                    @endfor
+
                                 </select>
                             </td>
 
-                            <td>${{$item->model->price}}</td>
+                            <td>${{ $item->total() }}</td>
                         </tr>
                         @endforeach
                         </tbody>
@@ -128,7 +136,7 @@
                                 </td>
 
                                 <td>
-                                    <select name="" id="" class="form-control" style="width: 4.7em">
+                                    <select name="" id="" class="form-control quantity" style="width: 4.7em">
                                         <option value="">1</option>
                                         <option value="">2</option>
                                     </select>
@@ -152,3 +160,32 @@
     </div>
     <!-- /.container -->
     @endsection
+
+@section('script')
+
+    <script src="{{ asset('js/app.js') }}"></script>
+    <script>
+
+        const className = document.querySelectorAll('.quantity');
+
+        Array.from(className).forEach(function (el) {
+            el.addEventListener('change', function () {
+                const id = el.getAttribute('data-id');
+                axios.patch(`/cart/update/${id}`, {
+                    quantity: this.value
+                })
+                    .then(function (response) {
+//                        console.log(response);
+                        location.reload();
+                    })
+
+                    .catch(function (error) {
+                        console.log(error);
+                        location.reload();
+                    });
+            });
+        });
+
+
+    </script>
+@endsection

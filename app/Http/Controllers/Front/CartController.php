@@ -46,4 +46,22 @@ class CartController extends Controller
 
         return redirect()->back()->with('msg','Item has been saved for later');
     }
+    public function update(Request $request, $id){
+
+        $validator = Validator::make($request->all(), [
+            'quantity' => 'required|numeric|between: 1,5'
+        ]);
+
+        if ($validator->fails()) {
+            session()->flash('errors','Quantity must be between 1 and 5');
+            return response()->json(['success' => false]);
+        }
+
+        Cart::update($id, $request->quantity);
+
+        session()->flash('msg','Quantity has been updated');
+
+        return response()->json(['success' => true]);
+
+    }
 }
